@@ -27,14 +27,3 @@ for (i=0; i < hours+1; i++) {
         <button class="saveBtn" type="submit">Save</button>
     </form>`)
 }
-/* <div class="time-block">
-        <form class="row">
-            <p class="hour">9am</p>
-            <textarea class="description present" style="
-    flex: 1;
-"></textarea>
-            <button class="saveBtn" type="submit" style="
-">Save the date</button>
-        </form>
-    </div>
-    </div> */
