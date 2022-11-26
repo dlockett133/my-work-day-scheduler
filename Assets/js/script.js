@@ -1,10 +1,8 @@
 // Returns the date/time for the present day
 var today = moment();
 
-var start = "09:00" // Start of work day 
+var startTime = "09:00" // Start of work day 
 
-// Formats string to 9:00 AM
-var startTime = moment(start, "H:mm").add(0, "h").format("h:mm A")
 
 // Selects 'currentDay' ID Element
 var currentDayEl = $("#currentDay");
@@ -19,13 +17,15 @@ timeBlockEl.appendTo(".container")
 
 var hours = 8;
 
-for (i=0; i<hours; i++) {
+for (i=0; i < hours+1; i++) {
     timeBlockEl.append(`
     <form class="row">
-        <p class="hour"></p>
+        <p class="hour">
+        ${moment(startTime, "H:mm").add(i, "h").format("h:mm A")}
+        </p>
         <textarea class="description"></textarea>
         <button class="saveBtn" type="submit">Save</button>
-  </form>`)
+    </form>`)
 }
 /* <div class="time-block">
         <form class="row">
