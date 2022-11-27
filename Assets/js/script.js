@@ -3,6 +3,8 @@ var today = moment();
 
 var startTime = "09:00" // Start of work day 
 
+// Returns the present hour
+var todayHour = today.format('H');
 
 // Selects 'currentDay' ID Element
 var currentDayEl = $("#currentDay");
@@ -18,12 +20,26 @@ timeBlockEl.appendTo(".container")
 var hours = 8;
 
 for (i=0; i < hours+1; i++) {
+    var time = moment(startTime, "H:mm").add(i, "h").format("h:mm A")
+    var militaryTime = moment(startTime, "H:mm").add(i, "h").format("H")
     timeBlockEl.append(`
     <form class="row">
         <p class="hour">
-        ${moment(startTime, "H:mm").add(i, "h").format("h:mm A")}
+        ${time}
         </p>
         <textarea class="description"></textarea>
         <button class="saveBtn" type="submit">Save</button>
     </form>`)
+
+    var descriptionEl = $(".description")
+    descriptionEl.each(function(){
+
+        if (militaryTime < todayHour) {
+            $(this).addClass("past")
+        } else if (militaryTime > todayHour){
+            $(this).addClass("future")
+        } else {
+            $(this).addClass("present")
+        }
+    })
 }
