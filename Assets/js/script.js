@@ -48,13 +48,12 @@ for (i=0; i < hours+1; i++) {
             $(this).addClass("present")
         }
     })
-
 }
 
  var rowEl = $(".row")
     rowEl.each(function() {
         $(this).submit(function(event) {
-            var hey = $('textarea').val()
+            var hey = $(this).find("textarea").val()
             $(this).find("textarea").text(hey)
             event.preventDefault();
         })
