@@ -1,10 +1,11 @@
 // Returns the date/time for the present day
 var today = moment();
 
-var startTime = "09:00" // Start of work day 
+// Starting 'hour' of calendar/ Can change to whatever start-time you like
+var startTime = "09:00"
 
 // Returns the present hour
-var todayHour = today.format('H');
+var todayHour = Number(today.format('H'));
 
 // Selects 'currentDay' ID Element
 var currentDayEl = $("#currentDay");
@@ -17,11 +18,14 @@ var timeBlockEl = $("<div>").addClass("time-block")
 // Appends element to the end of the 'container' class element
 timeBlockEl.appendTo(".container")
 
+// The amount of hours you want to schedule for
 var hours = 8;
 
+// Creates a time-block(s) equivalent to the value of the 'hours' variable
 for (i=0; i < hours+1; i++) {
     var time = moment(startTime, "H:mm").add(i, "h").format("h:mm A")
-    var militaryTime = moment(startTime, "H:mm").add(i, "h").format("H")
+    var militaryTime = Number(moment(startTime, "H:mm").add(i, "h").format("H"))
+    //Appends time-block and all its tags and attributes to the DOM
     timeBlockEl.append(`
     <form class="row">
         <p class="hour">
@@ -31,14 +35,16 @@ for (i=0; i < hours+1; i++) {
         <button class="saveBtn" type="submit">Save</button>
     </form>`)
 
+    // Selects all of the textarea elements that contain the 'description' class and returns them in an array
     var descriptionEl = $(".description")
+    
+    // Loops through each element and adds the corresponding class, based of the condition
     descriptionEl.each(function(){
-
         if (militaryTime < todayHour) {
             $(this).addClass("past")
         } else if (militaryTime > todayHour){
             $(this).addClass("future")
-        } else {
+        } else if(militaryTime === todayHour) {
             $(this).addClass("present")
         }
     })
