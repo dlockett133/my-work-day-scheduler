@@ -31,7 +31,7 @@ for (i=0; i < hours+1; i++) {
         <p class="hour">
         ${time}
         </p>
-        <textarea class="description"></textarea>
+        <textarea class="description" id="${i}"></textarea>
         <button class="saveBtn" type="submit">Save</button>
     </form>`)
 
@@ -48,4 +48,17 @@ for (i=0; i < hours+1; i++) {
             $(this).addClass("present")
         }
     })
+
 }
+
+ var rowEl = $(".row")
+    rowEl.each(function() {
+        $(this).submit(function(event) {
+            var hey = $('textarea').val()
+            $(this).find("textarea").text(hey)
+            event.preventDefault();
+        })
+    })
+
+
+// Use localStorage() function to save events
