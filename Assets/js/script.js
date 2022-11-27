@@ -5,7 +5,7 @@ var today = moment();
 var startTime = "09:00"
 
 // Returns the present hour
-var todayHour = Number(today.format('H'));
+var presentHour = Number(today.format('H'));
 
 // Selects 'currentDay' ID Element
 var currentDayEl = $("#currentDay");
@@ -40,11 +40,11 @@ for (i=0; i < hours+1; i++) {
     
     // Loops through each element and adds the corresponding class, based of the condition
     descriptionEl.each(function(){
-        if (militaryTime < todayHour) {
+        if (militaryTime < presentHour) {
             $(this).addClass("past")
-        } else if (militaryTime > todayHour){
+        } else if (militaryTime > presentHour){
             $(this).addClass("future")
-        } else if(militaryTime === todayHour) {
+        } else if(militaryTime === presentHour) {
             $(this).addClass("present")
         }
     })
