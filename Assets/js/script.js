@@ -34,7 +34,7 @@ for (i=0; i < hours+1; i++) {
         <p class="hour">
         ${time}
         </p>
-        <textarea class="description" id="${i}"></textarea>
+        <textarea type="text" class="description" id="${i}" placeholder="Enter Event Details Here"></textarea>
         <button class="saveBtn" type="submit"><ion-icon name="save-outline"></ion-icon></button>
     </form>`)
 
