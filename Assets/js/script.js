@@ -35,7 +35,7 @@ for (i=0; i < hours+1; i++) {
         ${time}
         </p>
         <textarea class="description" id="${i}"></textarea>
-        <button class="saveBtn" type="submit">Save</button>
+        <button class="saveBtn" type="submit"><ion-icon name="save-outline"></ion-icon></button>
     </form>`)
 
     // Selects all of the textarea elements that contain the 'description' class and returns them in an array
