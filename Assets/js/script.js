@@ -53,20 +53,31 @@ for (i=0; i < hours+1; i++) {
     })
 }
 
- var rowEl = $(".row")
-    rowEl.each(function() {
-        $(this).submit(function(event) {
-            var value = $(this).find("textarea").val()
-            var key = $(this).find("textarea").attr('id')
-            $(this).find("textarea").text(value)
-            window.localStorage.setItem(key, value)
-            event.preventDefault();
-        })
-    })
+// Selects all of the elements the 'row' class and returns them in an array
+var rowEl = $(".row")
 
-    rowEl.each(function(){
+// Loops through each 'rowEL' and adds an event listener for "submit"
+rowEl.each(function() {
+    $(this).submit(function(event) {
+        // Stores the value of the textarea element that was submitted
+        var value = $(this).find("textarea").val()
+        // Stores/selects the 'id' of the textarea element
         var key = $(this).find("textarea").attr('id')
-        var value = window.localStorage.getItem(key)
+        // Appends the value submitted of the textarea element into the DOM
         $(this).find("textarea").text(value)
+        // Saves the value of the submitted form in to Local Storage
+        window.localStorage.setItem(key, value)
+        event.preventDefault();
     })
+})
+
+// Loops through each 'rowEL' and inserts the values of each key in the Local Storage
+rowEl.each(function(){
+    // Stores/selects the 'id' of the textarea element
+    var key = $(this).find("textarea").attr('id')
+    // Retrieves/Grabs each key in the Local Storage
+    var value = window.localStorage.getItem(key)
+    // Appends the value of each key in to the DOM
+    $(this).find("textarea").text(value)
+})
 
