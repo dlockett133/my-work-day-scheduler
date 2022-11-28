@@ -5,6 +5,7 @@
 My motivation for this project was to create a dynamic scheduler that takes into consideration the user's working hours, and allows the user to store event/meeting details for that specific day for that specific hour.
 
 Please Enjoy!
+
 Link: https://dlockett133.github.io/my-work-day-scheduler/
 
 ## Usage
