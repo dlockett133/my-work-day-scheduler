@@ -9,8 +9,11 @@ var presentHour = Number(today.format('H'));
 
 // Selects 'currentDay' ID Element
 var currentDayEl = $("#currentDay");
-// Inserts today's date in currentDayEl element in (Monday, January 1st) format 
-currentDayEl.text(`${today.format("dddd, MMMM Do")}`);
+
+// Inserts a "LIVE" display of today's date and time in the 'currentDayEl' element 
+setInterval(()=> {
+    currentDayEl.text(`${moment().format("dddd, MMMM Do YYYY, h:mm:ss A")}`);
+},1000)
 
 // Creates a 'div' element with a 'time-block' class attribute
 var timeBlockEl = $("<div>").addClass("time-block")
@@ -66,7 +69,4 @@ for (i=0; i < hours+1; i++) {
         var value = window.localStorage.getItem(key)
         $(this).find("textarea").text(value)
     })
-// function updateEvent() {
-// var 
-// }
-// Use localStorage() function to save events
+
