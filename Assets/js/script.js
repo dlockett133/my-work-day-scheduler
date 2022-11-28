@@ -53,11 +53,20 @@ for (i=0; i < hours+1; i++) {
  var rowEl = $(".row")
     rowEl.each(function() {
         $(this).submit(function(event) {
-            var hey = $(this).find("textarea").val()
-            $(this).find("textarea").text(hey)
+            var value = $(this).find("textarea").val()
+            var key = $(this).find("textarea").attr('id')
+            $(this).find("textarea").text(value)
+            window.localStorage.setItem(key, value)
             event.preventDefault();
         })
     })
 
-
+    rowEl.each(function(){
+        var key = $(this).find("textarea").attr('id')
+        var value = window.localStorage.getItem(key)
+        $(this).find("textarea").text(value)
+    })
+// function updateEvent() {
+// var 
+// }
 // Use localStorage() function to save events
