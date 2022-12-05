@@ -27,7 +27,6 @@ var hours = 8;
 // Creates a time-block(s) equivalent to the value of the 'hours' variable
 for (i=0; i < hours+1; i++) {
     var time = moment(startTime, "H:mm").add(i, "h").format("h:mm A")
-    // var militaryTime = Number(moment(startTime, "H:mm").add(i, "h").format("H"))
     //Appends time-block and all its tags and attributes to the DOM
     timeBlockEl.append(`
     <form class="row">
@@ -42,6 +41,7 @@ for (i=0; i < hours+1; i++) {
 function changeColor() {
     // Selects all of the textarea elements that contain the 'description' class and returns them in an array
     var descriptionEl = $(".description")
+    // Changes format of time to be an integer (number data type)
     var militaryTime = Number(moment(startTime, "H:mm").format("h"))
 
     // Loops through each element and adds the corresponding class, based of the condition
