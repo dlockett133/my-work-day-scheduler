@@ -27,7 +27,7 @@ var hours = 8;
 // Creates a time-block(s) equivalent to the value of the 'hours' variable
 for (i=0; i < hours+1; i++) {
     var time = moment(startTime, "H:mm").add(i, "h").format("h:mm A")
-    var militaryTime = Number(moment(startTime, "H:mm").add(i, "h").format("H"))
+    // var militaryTime = Number(moment(startTime, "H:mm").add(i, "h").format("H"))
     //Appends time-block and all its tags and attributes to the DOM
     timeBlockEl.append(`
     <form class="row">
@@ -37,22 +37,29 @@ for (i=0; i < hours+1; i++) {
         <textarea type="text" class="description" id="${i}" placeholder="Enter Event Details Here"></textarea>
         <button class="saveBtn" type="submit"><ion-icon name="save-outline"></ion-icon></button>
     </form>`)
+}
 
+function changeColor() {
     // Selects all of the textarea elements that contain the 'description' class and returns them in an array
     var descriptionEl = $(".description")
-    
+    var militaryTime = Number(moment(startTime, "H:mm").format("h"))
+
     // Loops through each element and adds the corresponding class, based of the condition
     descriptionEl.each(function(){
         if (militaryTime < presentHour) {
             $(this).addClass("past")
+            militaryTime++
         } else if (militaryTime > presentHour){
             $(this).addClass("future")
+            militaryTime++
         } else if(militaryTime === presentHour) {
             $(this).addClass("present")
+            militaryTime++
         }
     })
 }
 
+changeColor();
 // Selects all of the elements the 'row' class and returns them in an array
 var rowEl = $(".row")
 
